@@ -68,7 +68,7 @@ public class CountryController
         List<Country> myList = new ArrayList<>();
         countryrepos.findAll().iterator().forEachRemaining(myList::add);
 
-        double total = 0.0;
+        long total = 0;
         for (Country c : myList)
         {
             total += c.getPopulation();
@@ -105,7 +105,8 @@ public class CountryController
         List<Country> myList = new ArrayList<>();
         countryrepos.findAll().iterator().forEachRemaining(myList::add);
         myList.sort(Comparator.comparing(Country::getPopulation));
-
+        System.out.println(myList.size()/2 + 1);
+        System.out.println(myList.size());
         return new ResponseEntity<>(myList.get(myList.size()/2 + 1), HttpStatus.OK);
     }
 
